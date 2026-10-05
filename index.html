@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Trilha da Mente | A jornada começa no primeiro passo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500..700;1,500..600&family=Nunito+Sans:wght@400;600;700;800&display=swap">
+<style>
+:root{
+  --night:#0E1E1A; --moss:#16302A; --pine:#1E3A34; --sage:#2C6B58; --mist:#CBD8D1;
+  --cream:#F6F3EA; --sand:#E9E5D5; --gold:#E6B85C; --bark:#3A2B05; --clay:#C9733F;
+  --serif:'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+  --sans:'Nunito Sans', Arial, Helvetica, sans-serif;
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-behavior:smooth}
+body{margin:0;width:100%;overflow-x:hidden;background:var(--night);color:var(--cream);font-family:var(--sans);line-height:1.6;-webkit-text-size-adjust:100%}
+h1,h2,h3{font-family:var(--serif);font-weight:600;line-height:1.08;margin:0}
+p{margin:0}
+a{color:inherit}
+:focus-visible{outline:3px solid #8DB8F0;outline-offset:3px;border-radius:10px}
+
+.skyband{background:linear-gradient(180deg,#0E1E1A 0%,#102521 18%,#16302A 42%,#1E3A34 64%,#2C6B58 86%,#E6B85C 100%)}
+.grain{position:relative}
+.grain::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:.05;background-image:radial-gradient(#F6F3EA 1px,transparent 1px);background-size:4px 4px}
+.glass{background:rgba(246,243,234,.07);border:1px solid rgba(246,243,234,.16);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.glass-dark{background:rgba(14,30,26,.46);border:1px solid rgba(230,184,92,.30);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.shadow-deep{box-shadow:0 22px 50px -24px rgba(0,0,0,.65)}
+.eyebrow{font-weight:700;letter-spacing:.2em;text-transform:uppercase;font-size:12px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+
+.js .reveal{opacity:0;transform:translateY(26px)}
+.float-slow{animation:floaty 7s ease-in-out infinite;display:inline-block}
+@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  .js .reveal{opacity:1!important;transform:none!important}
+  .float-slow{animation:none}
+}
+
+header.hero{position:relative;min-height:100vh;min-height:100svh;display:flex;flex-direction:column;justify-content:center;overflow:hidden}
+#stars{position:absolute;inset:0;pointer-events:none}
+.hill{position:absolute;bottom:0;left:0;width:100%;height:44vh}
+.heropath{position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:180px;height:40vh}
+.hero-inner{position:relative;z-index:10;max-width:960px;margin:0 auto;padding:0 24px;text-align:center}
+.hero h1{font-size:clamp(44px,9vw,104px)}
+.hero .kick{color:var(--gold);margin-bottom:24px}
+.hero .lead{color:var(--mist);font-size:clamp(18px,2.4vw,24px);max-width:640px;margin:28px auto 0}
+.hero .italic{font-style:italic;color:var(--gold)}
+.btn{display:inline-flex;align-items:center;gap:12px;margin-top:40px;border-radius:999px;padding:16px 28px;font-weight:700;min-height:52px;text-decoration:none;color:var(--cream)}
+
+.sec{position:relative;padding:96px 0}
+.center{text-align:center}
+.lbl-sage{color:var(--sage)}
+.lbl-gold{color:var(--gold)}
+.h2{font-size:clamp(30px,5vw,48px);line-height:1.12}
+.sub{color:var(--mist);font-size:18px;line-height:1.65;max-width:720px;margin:20px auto 0}
+.maxw3{max-width:760px;margin:0 auto}
+
+.trailwrap{position:relative}
+.trailsvg{position:absolute;left:50%;transform:translateX(-50%);top:0;height:100%;width:180px}
+.steps{position:relative;z-index:10;list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:64px}
+.step{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.step .slot{display:flex}
+.step .slot.a{grid-column:1;justify-content:flex-end;text-align:right}
+.step .slot.b{grid-column:2;justify-content:flex-start}
+.step.left .slot.b{visibility:hidden}
+.step.right .slot.a{visibility:hidden}
+.sign{border-radius:26px;padding:30px 32px;max-width:460px}
+.tilt{transform:rotate(-1.4deg)}
+.tilt2{transform:rotate(1.1deg)}
+.sign .cap{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+.step.left .sign .cap{justify-content:flex-end}
+.badge{display:inline-flex;height:44px;min-width:44px;padding:0 6px;align-items:center;justify-content:center;border-radius:999px;background:var(--gold);color:var(--bark);font-family:var(--serif);font-size:24px;font-weight:700}
+.badge.star{background:var(--cream);color:var(--pine)}
+.sign h3{font-size:clamp(26px,3.4vw,36px);color:var(--cream);margin-bottom:8px}
+.sign p{color:rgba(203,216,209,.92);font-size:17px}
+.sign .note{margin-top:12px;color:var(--gold);font-weight:700;font-size:14.5px}
+@media (max-width:720px){
+  .trailsvg{left:22px;transform:none;width:60px}
+  .steps{gap:40px}
+  .step{grid-template-columns:1fr;gap:0;padding-left:56px}
+  .step .slot.a,.step .slot.b{grid-column:1;justify-content:flex-start;text-align:left}
+  .step.left .slot.b,.step.right .slot.a{display:none}
+  .step.left .slot.a,.step.right .slot.b{visibility:visible}
+  .step.left .sign .cap{justify-content:flex-start}
+  .tilt,.tilt2{transform:none}
+  .sign{max-width:none}
+}
+
+.payoff{position:relative;background:linear-gradient(180deg,var(--gold) 0%,var(--clay) 55%,var(--pine) 100%);padding:96px 0;overflow:hidden}
+.payoff .top{position:absolute;top:0;left:0;width:100%;height:60px}
+.payoff h2{color:var(--pine);font-size:clamp(32px,6vw,58px);line-height:1.05}
+.payoff .eyebrow{color:rgba(58,43,5,.8)}
+.payoff p{color:rgba(30,58,52,.88);font-size:18px;line-height:1.65;max-width:720px;margin:24px auto 0}
+
+.role{background:var(--pine)}
+.role-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:52px}
+.role-card{border-radius:26px;padding:28px}
+.role-card .ic{height:48px;width:48px;border-radius:999px;background:rgba(230,184,92,.92);color:var(--bark);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:24px;font-weight:700;margin-bottom:16px}
+.role-card h3{color:var(--cream);font-size:24px;margin-bottom:8px}
+.role-card p{color:rgba(203,216,209,.85)}
+.role .foot{color:rgba(203,216,209,.7);font-size:14.5px;max-width:640px;margin:40px auto 0;text-align:center}
+@media (max-width:720px){.role-grid{grid-template-columns:1fr}}
+
+.cta{background:var(--night);text-align:center}
+.cta .quote{font-family:var(--serif);font-style:italic;color:var(--gold);font-size:clamp(22px,3.4vw,32px);line-height:1.4;margin-bottom:28px}
+.cta h2{color:var(--cream);font-size:clamp(28px,4.4vw,42px);margin-bottom:16px}
+.cta p{color:rgba(203,216,209,.85);font-size:18px}
+.cta .sig{margin-top:32px;color:var(--cream);font-weight:700;font-size:18px}
+
+footer{background:var(--night);border-top:1px solid rgba(246,243,234,.1);padding:32px 24px;text-align:center}
+footer p{color:rgba(203,216,209,.55);font-size:14px;max-width:560px;margin:0 auto}
+</style>
+</head>
+<body>
+
+<header class="hero grain skyband">
+  <div id="stars"></div>
+  <svg class="hill" viewBox="0 0 1440 420" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0,420 L0,250 C180,190 320,300 520,250 C760,190 900,300 1120,240 C1280,196 1380,250 1440,230 L1440,420 Z" fill="#16302A"/>
+    <path d="M0,420 L0,320 C220,270 420,360 680,310 C940,262 1120,350 1440,300 L1440,420 Z" fill="#102521"/>
+    <path d="M0,420 L0,372 C260,344 520,392 820,360 C1080,332 1280,382 1440,360 L1440,420 Z" fill="#0E1E1A"/>
+  </svg>
+  <svg class="heropath" viewBox="0 0 220 420" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M110,420 C96,330 150,300 120,220 C96,156 140,120 110,30" fill="none" stroke="#E6B85C" stroke-width="5" stroke-linecap="round" opacity="0.65" stroke-dasharray="2 14"/>
+  </svg>
+  <div class="hero-inner">
+    <p class="reveal eyebrow kick">Trilha da Mente &middot; Juliana Fell</p>
+    <h1 class="reveal">A trilha n&atilde;o<br><span class="italic">termina</span> na trilha</h1>
+    <p class="reveal lead">Uma caminhada &eacute; s&oacute; o primeiro passo. Veja aonde cada pessoa pode ir depois de dar esse passo com voc&ecirc;.</p>
+    <a href="#jornada" class="reveal btn glass">Descer a trilha <span class="float-slow" aria-hidden="true">&darr;</span></a>
+  </div>
+</header>
+
+<section class="sec" style="background:var(--night)">
+  <div class="wrap center maxw3">
+    <p class="reveal eyebrow lbl-sage" style="margin-bottom:20px">O que muita gente n&atilde;o v&ecirc;</p>
+    <h2 class="reveal h2" style="color:var(--cream)">Cada caminhada &eacute; a porta de entrada do seu m&eacute;todo</h2>
+    <p class="reveal sub">Em duas horas de trilha, a pessoa j&aacute; vive o que voc&ecirc; faz. Quem sente isso quer continuar. A partir da&iacute;, tudo que voc&ecirc; construiu est&aacute; esperando logo adiante: o grupo, o programa e a turma. Des&ccedil;a e veja a jornada inteira.</p>
+  </div>
+</section>
+
+<section id="jornada" class="sec journey grain skyband">
+  <div class="wrap trailwrap">
+    <svg class="trailsvg" viewBox="0 0 180 1600" preserveAspectRatio="none" fill="none" aria-hidden="true">
+      <path d="M90,0 C60,150 120,260 90,400 C60,540 130,640 90,800 C50,960 130,1060 90,1200 C60,1320 110,1440 90,1600" stroke="#F6F3EA" stroke-width="4" stroke-linecap="round" stroke-dasharray="3 16" opacity="0.5"/>
+      <path id="trailGlow" d="M90,0 C60,150 120,260 90,400 C60,540 130,640 90,800 C50,960 130,1060 90,1200 C60,1320 110,1440 90,1600" stroke="#E6B85C" stroke-width="5" stroke-linecap="round"/>
+    </svg>
+
+    <ol class="steps">
+      <li class="step left">
+        <div class="slot a">
+          <div class="reveal sign glass-dark shadow-deep tilt">
+            <div class="cap"><span class="badge">0</span><span class="eyebrow lbl-gold">O chamado</span></div>
+            <h3>O Di&aacute;rio da Gratid&atilde;o</h3>
+            <p>O primeiro contato. Um presente simples que mostra o seu jeito de cuidar, antes mesmo da pessoa cal&ccedil;ar o t&ecirc;nis.</p>
+          </div>
+        </div>
+        <div class="slot b"></div>
+      </li>
+
+      <li class="step right">
+        <div class="slot a"></div>
+        <div class="slot b">
+          <div class="reveal sign glass-dark shadow-deep tilt2">
+            <div class="cap"><span class="badge">1</span><span class="eyebrow lbl-gold">O primeiro passo</span></div>
+            <h3>A Trilha da Mente</h3>
+            <p>A caminhada guiada na natureza. Aqui a pessoa sente, na pele, o que o seu m&eacute;todo faz. &Eacute; a experi&ecirc;ncia que fica na mem&oacute;ria e pede continua&ccedil;&atilde;o.</p>
+            <p class="note">&Eacute; aqui que a jornada de verdade come&ccedil;a.</p>
+          </div>
+        </div>
+      </li>
+
+      <li class="step left">
+        <div class="slot a">
+          <div class="reveal sign glass-dark shadow-deep tilt">
+            <div class="cap"><span class="badge">2</span><span class="eyebrow lbl-gold">A companhia</span></div>
+            <h3>A comunidade que caminha junto</h3>
+            <p>Quem caminhou uma vez entra no grupo e n&atilde;o fica mais sozinho entre um encontro e outro. A trilha vira conv&iacute;vio, e o conv&iacute;vio mant&eacute;m as pessoas por perto.</p>
+          </div>
+        </div>
+        <div class="slot b"></div>
+      </li>
+
+      <li class="step right">
+        <div class="slot a"></div>
+        <div class="slot b">
+          <div class="reveal sign glass-dark shadow-deep tilt2">
+            <div class="cap"><span class="badge">3</span><span class="eyebrow lbl-gold">A transforma&ccedil;&atilde;o</span></div>
+            <h3>O programa, em turma pequena</h3>
+            <p>As 8 sess&otilde;es do Alinhamento e Reconex&atilde;o, vividas em grupo. O seu trabalho mais profundo, agora alcan&ccedil;ando mais gente ao mesmo tempo, sem deixar de ser &iacute;ntimo.</p>
+          </div>
+        </div>
+      </li>
+
+      <li class="step left">
+        <div class="slot a">
+          <div class="reveal sign glass-dark shadow-deep tilt">
+            <div class="cap"><span class="badge star">&#9733;</span><span class="eyebrow" style="color:var(--cream)">O horizonte</span></div>
+            <h3>Onde a sua trilha pode chegar</h3>
+            <p>Caminhadas para empresas, turmas que se repetem e a sua assinatura reconhecida. Quando voc&ecirc; quiser, o mesmo m&eacute;todo abre caminhos maiores.</p>
+          </div>
+        </div>
+        <div class="slot b"></div>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<section class="payoff">
+  <svg class="top" viewBox="0 0 1440 80" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0,0 L1440,0 L1440,40 C1120,80 900,20 620,56 C360,88 160,36 0,60 Z" fill="#E6B85C"/>
+  </svg>
+  <div class="wrap center maxw3">
+    <p class="reveal eyebrow" style="margin-bottom:20px">O que voc&ecirc; j&aacute; tem nas m&atilde;os</p>
+    <h2 class="reveal">Voc&ecirc; j&aacute; abriu a trilha.<br>Falta s&oacute; colocar as placas.</h2>
+    <p class="reveal">Cada pe&ccedil;a da jornada j&aacute; existe no seu trabalho. O que falta &eacute; o caminho entre uma e outra, para que ningu&eacute;m se perca depois de caminhar com voc&ecirc;. Essa &eacute; a parte que eu cuido, no seu tom e no seu ritmo.</p>
+  </div>
+</section>
+
+<section class="sec role grain">
+  <div class="wrap">
+    <div class="center">
+      <p class="reveal eyebrow lbl-gold" style="margin-bottom:16px">O meu papel</p>
+      <h2 class="reveal h2" style="color:var(--cream)">Eu ponho as placas. Voc&ecirc; caminha.</h2>
+    </div>
+    <div class="role-grid">
+      <div class="reveal role-card glass">
+        <div class="ic" aria-hidden="true">&#9998;</div>
+        <h3>Eu escrevo e envio</h3>
+        <p>Os convites saem no seu tom, para quem j&aacute; caminhou com voc&ecirc;. Voc&ecirc; s&oacute; aprova.</p>
+      </div>
+      <div class="reveal role-card glass">
+        <div class="ic" aria-hidden="true">&#9825;</div>
+        <h3>Voc&ecirc; conversa</h3>
+        <p>Quem responde fala com voc&ecirc;. A rela&ccedil;&atilde;o continua sendo sua, do come&ccedil;o ao fim.</p>
+      </div>
+      <div class="reveal role-card glass">
+        <div class="ic" aria-hidden="true">&#10022;</div>
+        <h3>Voc&ecirc; v&ecirc; o resultado</h3>
+        <p>Todo m&ecirc;s, um relat&oacute;rio simples do que voltou, em reais. Sem promessa, com n&uacute;meros de verdade.</p>
+      </div>
+    </div>
+    <p class="reveal foot">Sem Reels obrigat&oacute;rios, sem lives, sem voc&ecirc; precisar entender de tecnologia. No m&aacute;ximo uma hora por semana do seu tempo.</p>
+  </div>
+</section>
+
+<section class="sec cta">
+  <div class="wrap maxw3">
+    <p class="reveal quote">&ldquo;A sua trilha &eacute; a porta por onde as pessoas entram no seu trabalho. Tudo o que voc&ecirc; j&aacute; construiu mora depois dela.&rdquo;</p>
+    <h2 class="reveal">Vamos caminhar o primeiro trecho juntos?</h2>
+    <p class="reveal">Come&ccedil;amos com um m&ecirc;s de teste, com as pessoas que j&aacute; gostam de voc&ecirc;.</p>
+    <p class="reveal sig">Cid &middot; CJC Consultoria</p>
+  </div>
+</section>
+
+<footer>
+  <p>Jornada ilustrativa do m&eacute;todo Trilha da Mente. As etapas acompanham o que voc&ecirc; j&aacute; tem e avan&ccedil;am no seu ritmo.</p>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+(function(){
+  var sky = document.getElementById('stars');
+  if (sky){
+    var n = window.innerWidth < 640 ? 34 : 64, html = '';
+    for (var i=0;i<n;i++){
+      var top=Math.random()*55, left=Math.random()*100, s=Math.random()*2+1, o=Math.random()*0.6+0.2;
+      html += '<span style="position:absolute;top:'+top+'%;left:'+left+'%;width:'+s+'px;height:'+s+'px;border-radius:9999px;background:#F6F3EA;opacity:'+o+'"></span>';
+    }
+    sky.innerHTML = html;
+  }
+
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!window.gsap || reduce) return;
+
+  document.documentElement.classList.add('js');
+  gsap.registerPlugin(ScrollTrigger);
+
+  gsap.fromTo('header .reveal', {opacity:0,y:26}, {opacity:1,y:0,duration:0.9,ease:'power3.out',stagger:0.14,delay:0.1});
+  gsap.utils.toArray('section .reveal').forEach(function(el){
+    gsap.fromTo(el,{opacity:0,y:26},{opacity:1,y:0,duration:0.8,ease:'power3.out',scrollTrigger:{trigger:el,start:'top 86%'}});
+  });
+  gsap.utils.toArray('.sign').forEach(function(card){
+    gsap.fromTo(card,{opacity:0,y:40,scale:0.97},{opacity:1,y:0,scale:1,duration:0.85,ease:'power3.out',scrollTrigger:{trigger:card,start:'top 85%'}});
+  });
+  var glow = document.getElementById('trailGlow');
+  if (glow && glow.getTotalLength){
+    var len = glow.getTotalLength();
+    glow.style.strokeDasharray = len; glow.style.strokeDashoffset = len;
+    gsap.to(glow,{strokeDashoffset:0,ease:'none',scrollTrigger:{trigger:'#jornada',start:'top 70%',end:'bottom 80%',scrub:0.6}});
+  }
+})();
+</script>
+</body>
+</html>
